@@ -3,6 +3,7 @@ import axios from "axios";
 import Context from "../context";
 import Controls from "../utils/Controls";
 import RoomInfo from "./RoomInfo";
+import Map from "./Map";
 
 const token = "Token afc14f3d4808a91607f2e54e6072ab7de7d1c4e5";
 const headers = {
@@ -44,6 +45,7 @@ const Dashboard = () => {
     <>
       <Controls handleClick={handleControls} />
       <RoomInfo />
+      <Map />
     </>
   );
 };
