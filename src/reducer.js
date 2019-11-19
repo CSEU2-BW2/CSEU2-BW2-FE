@@ -26,6 +26,7 @@ export default function reducer(state, { type, payload }) {
     case "FETCH_PLAYER":
       return {
         ...state,
+        name: payload.name,
         strength: payload.strength,
         speed: payload.speed,
         gold: payload.gold,

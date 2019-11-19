@@ -12,6 +12,7 @@ const context = createContext({
   errors: [],
   messages: [],
   items: [],
+  name: "",
   strength: 10,
   speed: 10,
   gold: 0,

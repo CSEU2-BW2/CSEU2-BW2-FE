@@ -10,6 +10,8 @@ const headers = {
 
 const PlayerInfo = () => {
   const { state, dispatch } = useContext(Context);
+  console.log(state);
+  
   useEffect(() => {
     axios
       .post(
@@ -25,15 +27,20 @@ const PlayerInfo = () => {
         //dispatch({ type: "ERROR_INIT", payload: err.response.data });
       });
   }, []);
+
   return (
     <Root>
       <p>Player name: {state.name}</p>
       <p>Strength: {state.strength}</p>
       <p>Speed: {state.speed}</p>
       <p>Gold: {state.gold}</p>
-      <p>Inventory: {state.gold}</p>
+      <p>
+        Inventory:{" "}
+        {state.inventory.length > 0 &&
+          state.inventory.map(inv => <span key={inv}>{inv} </span>)}
+      </p>
       <p>Status {state.status}</p>
-      <p>Player has mined {state.hasMined}</p>
+      <p>Player has mined: {state.hasMined.toString()}</p>
       <p>Player Error {state.playerErrors}</p>
     </Root>
   );
@@ -46,7 +53,9 @@ const Root = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-left: 20px;
+  padding-left: 20px;
+  background: darkslategrey;
+  color: white;
   p {
     margin: 5px;
   }

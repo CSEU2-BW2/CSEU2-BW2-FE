@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 import Context from "../context";
 import styled from "styled-components";
 
-
-
 const RoomInfo = () => {
   const { state } = useContext(Context);
   console.log(state.items);
@@ -24,12 +22,15 @@ const RoomInfo = () => {
         </p>
         <p>
           Avaible exits:
-          {state.exits.length > 0 &&
-            state.exits.map(exit => <span key={exit}> {exit}</span>)}
+          {state.exits.length > 0
+            ? state.exits.map(exit => <span key={exit}> {exit}</span>)
+            : "No exits"}
         </p>
       </Main>
-      {state.errors.length > 0 && (
+      {state.errors.length > 0 ? (
         <h5 style={{ color: "red" }}>{state.errors[0]}</h5>
+      ) : (
+        ""
       )}
     </Root>
   );
