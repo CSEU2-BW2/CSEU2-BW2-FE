@@ -38,6 +38,7 @@ const Map = () => {
   const currentRoomCoords = state.room_id ? coordinates[state.room_id] : null;
   const currentRoom = [currentRoomCoords];
   const exits = values.map(exit => exit[1]);
+  console.log(state.room_id);
 
   const lineDisplay = values.map((value, index) => {
     const connections = getConnections(
@@ -50,29 +51,16 @@ const Map = () => {
 
   return (
     <MapWrapper>
-      {room ? <button>{room}</button> : null}
-      <FlexibleXYPlot width={800} height={700}>
+      <button>{state.room_id}</button>
+      <FlexibleXYPlot width={800} height={600}>
         {lineDisplay}
         <MarkSeries data={coordinates} color="red" strokeWidth={1} size={4} />
         {currentRoomCoords ? (
           <MarkSeries
             data={currentRoom}
-            color="pink"
+            color="black"
             size={10}
             strokewidth={7}
-            // onValueMouseOver={datapoint => {
-            //   // display room number on mouseover
-            //   keys.map(keyValue => {
-            //     if (
-            //       mapData[keyValue][0].x === datapoint.x &&
-            //       mapData[keyValue][0].y === datapoint.y
-            //     ) {
-            //       setRoom(keyValue);
-            //     }
-            //     return keyValue;
-            //   });
-            // }}
-            // onValueMouseOut={() => setRoom(null)}
           />
         ) : null}
       </FlexibleXYPlot>
@@ -90,10 +78,10 @@ const MapWrapper = styled.div`
     position: absolute;
     right: 2rem;
     background: none;
-    border: 2px solid #ffc15e;
+    border: 2px solid black;
     border-radius: 4px;
     padding: 1rem 2rem;
     font-size: 2rem;
-    color: #ffc15e;
+    color: purple;
   }
 `;

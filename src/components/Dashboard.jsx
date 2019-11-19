@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import axios from "axios";
+import styled from "styled-components";
 import Context from "../context";
 import Controls from "../utils/Controls";
 import RoomInfo from "./RoomInfo";
@@ -30,6 +31,7 @@ const Dashboard = () => {
           headers
         )
         .then(res => {
+          debugger;
           dispatch({ type: "FETCH_MOVE", payload: res.data });
         })
         .catch(err => {
@@ -42,11 +44,11 @@ const Dashboard = () => {
   };
 
   return (
-    <>
+    <div>
       <Controls handleClick={handleControls} />
       <RoomInfo />
       <Map />
-    </>
+    </div>
   );
 };
 
