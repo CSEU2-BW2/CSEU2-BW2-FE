@@ -9,7 +9,7 @@ const RoomInfo = () => {
     <Root>
       <Head>
         <h2>{state.title}</h2>
-        <p> room id: {state.room_id}</p>
+        {/* <p> room id: {state.room_id}</p> */}
       </Head>
       <Main>
         <p>Cooldown: {state.cooldown}</p>
@@ -29,10 +29,13 @@ export default RoomInfo;
 
 const Root = styled.div`
   border: 1px solid black;
+  background: darkslategrey;
+  color: white;
 `;
 
 const Head = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: baseline;
 `;

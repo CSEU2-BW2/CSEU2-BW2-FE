@@ -43,12 +43,24 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
-      <Controls handleClick={handleControls} />
-      <RoomInfo />
+    <Root>
+      <SidePannel>
+        <Controls handleClick={handleControls} />
+        <RoomInfo />
+      </SidePannel>
       <Map />
-    </div>
+    </Root>
   );
 };
 
 export default Dashboard;
+
+const Root = styled.div`
+  display: flex;
+  padding-top: 20px;
+`;
+const SidePannel = styled.div`
+  height: 100%;
+  min-width: 300px;
+
+`;
