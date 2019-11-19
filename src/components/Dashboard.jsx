@@ -14,8 +14,6 @@ const headers = {
 const Dashboard = () => {
   const { state, dispatch } = useContext(Context);
 
-  console.log("DASHBARD: ", state);
-
   const handleControls = e => {
     const next_room_id =
       state.mapGraph[state.room_id][1][e.target.value.toString()] || 0;
@@ -31,7 +29,8 @@ const Dashboard = () => {
           headers
         )
         .then(res => {
-          debugger;
+          //debugger;
+          console.log(res.data);
           dispatch({ type: "FETCH_MOVE", payload: res.data });
         })
         .catch(err => {
