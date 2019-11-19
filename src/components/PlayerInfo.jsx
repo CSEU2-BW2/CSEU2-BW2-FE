@@ -3,7 +3,7 @@ import Context from "../context";
 import styled from "styled-components";
 import axios from "axios";
 
-const token = "Token afc14f3d4808a91607f2e54e6072ab7de7d1c4e5";
+const token = "Token " + process.env.REACT_APP_API_KEY;
 const headers = {
   headers: { "Content-Type": "application/JSON", Authorization: token }
 };
@@ -11,7 +11,7 @@ const headers = {
 const PlayerInfo = () => {
   const { state, dispatch } = useContext(Context);
   console.log(state);
-  
+
   useEffect(() => {
     axios
       .post(
