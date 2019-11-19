@@ -10,7 +10,8 @@ const context = createContext({
   exits: [],
   cooldown: 0,
   errors: [],
-  messages: []
+  messages: [],
+  items: []
 });
 
 export default context;

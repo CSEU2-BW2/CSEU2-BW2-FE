@@ -5,6 +5,7 @@ import Context from "../context";
 import Controls from "../utils/Controls";
 import RoomInfo from "./RoomInfo";
 import Map from "./Map";
+import TresurePicker from "./TresurePicker";
 
 const token = "Token afc14f3d4808a91607f2e54e6072ab7de7d1c4e5";
 const headers = {
@@ -47,6 +48,7 @@ const Dashboard = () => {
       <SidePannel>
         <Controls handleClick={handleControls} />
         <RoomInfo />
+        <TresurePicker />
       </SidePannel>
       <Map />
     </Root>
@@ -61,6 +63,6 @@ const Root = styled.div`
 `;
 const SidePannel = styled.div`
   height: 100%;
-  min-width: 300px;
-
+  min-width: 350px;
+  max-width: 350px;
 `;

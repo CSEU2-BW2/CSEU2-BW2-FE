@@ -5,13 +5,13 @@ const Controls = props => {
   return (
     <Root className="controller">
       <Button onClick={e => props.handleClick(e)} value="w">
-        🔼
+        ⬅️
       </Button>
       <Button onClick={e => props.handleClick(e)} value="n">
-        🔽
+        🔼
       </Button>
       <Button onClick={e => props.handleClick(e)} value="s">
-        ⬅️
+        🔽
       </Button>
       <Button onClick={e => props.handleClick(e)} value="e">
         ➡️

@@ -20,7 +20,8 @@ export default function reducer(state, { type, payload }) {
         exits: payload.exits,
         cooldown: payload.cooldown,
         errors: payload.errors,
-        messages: payload.messages
+        messages: payload.messages,
+        items: payload.items
       };
     case "ERROR_INIT":
       return {
@@ -30,7 +31,7 @@ export default function reducer(state, { type, payload }) {
     case "MOVE_ERROR":
       return {
         ...state,
-        errors: payload
+        errors: payload.errors
       };
     default:
       return state;

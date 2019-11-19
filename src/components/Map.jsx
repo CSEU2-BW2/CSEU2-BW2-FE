@@ -38,7 +38,6 @@ const Map = () => {
   const currentRoomCoords = state.room_id ? coordinates[state.room_id] : null;
   const currentRoom = [currentRoomCoords];
   const exits = values.map(exit => exit[1]);
-  console.log(state.room_id);
 
   const lineDisplay = values.map((value, index) => {
     const connections = getConnections(
@@ -51,7 +50,6 @@ const Map = () => {
 
   return (
     <MapWrapper>
-      <button>{state.room_id}</button>
       <FlexibleXYPlot width={800} height={600}>
         {lineDisplay}
         <MarkSeries data={coordinates} color="red" strokeWidth={1} size={4} />
@@ -71,17 +69,6 @@ const Map = () => {
 export default Map;
 
 const MapWrapper = styled.div`
-  h1 {
-    text-align: center;
-  }
-  button {
-    position: absolute;
-    right: 2rem;
-    background: none;
-    border: 2px solid black;
-    border-radius: 4px;
-    padding: 1rem 2rem;
-    font-size: 2rem;
-    color: purple;
-  }
+
+
 `;
