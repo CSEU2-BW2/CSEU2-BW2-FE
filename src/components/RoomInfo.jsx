@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import Context from "../context";
 import styled from "styled-components";
 
+
+
 const RoomInfo = () => {
   const { state } = useContext(Context);
   console.log(state.items);
@@ -13,7 +15,7 @@ const RoomInfo = () => {
         {/* <p> room id: {state.room_id}</p> */}
         {state.items.length === 0
           ? "No Tresures in this Room"
-          : state.items.map(item => <p>Tresure: {item}</p>)}
+          : state.items.map(item => <p key={item}>Tresure: {item}</p>)}
       </Head>
       <Main>
         <p>Cooldown: {state.cooldown}</p>

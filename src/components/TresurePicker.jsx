@@ -13,6 +13,7 @@ const TresurePicker = () => {
 export default TresurePicker;
 
 const Root = styled.div`
+  height: 70px;
   button {
     padding: 10px;
     border-radius: 5px;

@@ -11,7 +11,15 @@ const context = createContext({
   cooldown: 0,
   errors: [],
   messages: [],
-  items: []
+  items: [],
+  strength: 10,
+  speed: 10,
+  gold: 0,
+  inventory: [],
+  status: [],
+  hasMined: false,
+  playerErrors: [],
+  playerMessages: []
 });
 
 export default context;

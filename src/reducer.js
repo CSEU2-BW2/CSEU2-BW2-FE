@@ -23,6 +23,18 @@ export default function reducer(state, { type, payload }) {
         messages: payload.messages,
         items: payload.items
       };
+    case "FETCH_PLAYER":
+      return {
+        ...state,
+        strength: payload.strength,
+        speed: payload.speed,
+        gold: payload.gold,
+        inventory: payload.inventory,
+        status: payload.status,
+        hasMined: payload.has_mined,
+        playerErrors: payload.errors,
+        playerMessages: payload.messages
+      };
     case "ERROR_INIT":
       return {
         ...state,
