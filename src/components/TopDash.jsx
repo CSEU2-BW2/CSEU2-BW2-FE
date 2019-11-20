@@ -10,26 +10,44 @@ const headers = {
 };
 
 const TopDash = () => {
-  const { state } = useContext(Context);
+  const { state, dispatch } = useContext(Context);
   // const [value, Dropdown] = useDropdown("Sell", "", state.inventory);
-  const [val, setVal] = useState("Choose");
+  const [val, setVal] = useState("");
+  // console.log(val);
 
-  const sellItems = () => {
+  const sellItem = () => {
     axios
       .post(
-        "https://lambda-treasure-hunt.herokuapp.com/api/adv/take/",
-        { name: val },
+        "https://lambda-treasure-hunt.herokuapp.com/api/adv/sell/",
+        { name: val, confirm: "yes" },
         headers
       )
       .then(res => {
-        debugger;
-        //dispatch({ type: "FETCH_PLAYER", payload: res.data });
+        //debugger;
+        dispatch({ type: "SELL_SUCCESS", payload: res.data });
       })
       .catch(err => {
-        debugger;
+        //debugger;
         //dispatch({ type: "ERROR_INIT", payload: err.response.data });
       });
   };
+
+  // const comfirmSell = () => {
+  //   axios
+  //     .post(
+  //       "https://lambda-treasure-hunt.herokuapp.com/api/adv/sell/",
+  //       { name: val, confirm: "yes" },
+  //       headers
+  //     )
+  //     .then(res => {
+  //       debugger;
+  //       //dispatch({ type: "FETCH_PLAYER", payload: res.data });
+  //     })
+  //     .catch(err => {
+  //       debugger;
+  //       //dispatch({ type: "ERROR_INIT", payload: err.response.data });
+  //     });
+  // };
 
   return (
     <Root>
@@ -43,12 +61,12 @@ const TopDash = () => {
         sell Item
         <select
           id={state.room_id}
-          value={state}
+          value={val}
           onChange={e => setVal(e.target.value)}
           onBlur={e => setVal(e.target.value)}
           disabled={!state.inventory.length}
         >
-          <option>{val}</option>
+          <option>Choose</option>
           {state.inventory &&
             state.inventory.map((item, idx) => (
               <option key={idx} value={item}>
@@ -57,6 +75,7 @@ const TopDash = () => {
             ))}
         </select>
       </label>
+      {val.length > 0 && <button onClick={sellItem}>Sell Item</button>}
     </Root>
   );
 };

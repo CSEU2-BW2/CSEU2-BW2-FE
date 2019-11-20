@@ -26,7 +26,7 @@ const PlayerInfo = () => {
         console.log(err);
         //dispatch({ type: "ERROR_INIT", payload: err.response.data });
       });
-  }, []);
+  }, [dispatch]);
 
   return (
     <Root>
@@ -39,9 +39,8 @@ const PlayerInfo = () => {
         {state.inventory.length > 0 &&
           state.inventory.map((inv, idx) => <span key={idx}>{inv} </span>)}
       </p>
-      <p>Status {state.status}</p>
       <p>Player has mined: {state.hasMined.toString()}</p>
-      <p>Player Error {state.playerErrors}</p>
+      <p>Message: {state.playerMessages}</p>
     </Root>
   );
 };

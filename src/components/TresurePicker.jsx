@@ -11,8 +11,6 @@ const headers = {
 const TresurePicker = () => {
   const { state } = useContext(Context);
 
-  console.log(state.roomIdOnMouseOver);
-
   const tresureInTheRoom = state.items.length > 0 ? state.items[0] : "";
 
   const pickTresure = () => {

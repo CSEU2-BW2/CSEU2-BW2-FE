@@ -18,7 +18,6 @@ const context = createContext({
   speed: 10,
   gold: 0,
   inventory: [],
-  status: [],
   hasMined: false,
   playerErrors: [],
   playerMessages: [],

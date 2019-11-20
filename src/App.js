@@ -34,11 +34,9 @@ function App() {
     console.log(state.cooldown);
     if (!state.cooldownActive) {
       const cooldownInterval = setInterval(() => {
-        console.log("OUTSIDE ", state.cooldown, state.cooldownActive);
         if (state.cooldown > 0) {
           dispatch({ type: "DECREASE_COOLDOWN", payload: true });
         } else {
-          console.log("INSIDE", state.cooldown);
           clearInterval(cooldownInterval);
           dispatch({ type: "SET_COOLDOWN", payload: 0 });
         }
