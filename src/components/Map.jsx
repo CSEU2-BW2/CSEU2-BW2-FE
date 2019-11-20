@@ -45,7 +45,9 @@ const Map = () => {
       exits[index],
       values
     );
-    return <LineSeries data={connections} color="blue" strokeWidth={1} />;
+    return (
+      <LineSeries data={connections} color="blue" strokeWidth={1} key={index} />
+    );
   });
 
   return (
@@ -68,7 +70,4 @@ const Map = () => {
 
 export default Map;
 
-const MapWrapper = styled.div`
-
-
-`;
+const MapWrapper = styled.div``;

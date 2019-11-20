@@ -36,6 +36,18 @@ export default function reducer(state, { type, payload }) {
         playerErrors: payload.errors,
         playerMessages: payload.messages
       };
+    case "DECREASE_COOLDOWN":
+      return {
+        ...state,
+        cooldown: state.cooldown - 1,
+        cooldownActive: payload
+      };
+    case "SET_COOLDOWN":
+      return {
+        ...state,
+        // cooldown: 0,
+        cooldownActive: false
+      };
     case "ERROR_INIT":
       return {
         ...state,

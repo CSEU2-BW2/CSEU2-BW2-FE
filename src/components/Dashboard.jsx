@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Context from "../context";
@@ -42,12 +43,33 @@ const Dashboard = () => {
           });
         });
     }
+    countDownCooldown();
   };
+
+  useEffect(() => {
+    if (state.cooldown > 0) {
+      countDownCooldown();
+    }
+  }, [state.cooldown]);
+
+  const countDownCooldown = async () => {
+    if (!state.cooldownActive) {
+      const cooldownInterval = setInterval(() => {
+        if (state.cooldown > 0) {
+          dispatch({ type: "DECREASE_COOLDOWN", payload: true });
+        } else {
+          clearInterval(cooldownInterval);
+          dispatch({ type: "SET_COOLDOWN" });
+        }
+      }, 1000);
+    }
+  };
+  const disabled = state.cooldown < 0 ? false : true;
 
   return (
     <Root>
       <SidePannel>
-        <Controls handleClick={handleControls} />
+        <Controls handleClick={handleControls} disabled={disabled} />
         <RoomInfo />
         <TresurePicker />
         <PlayerInfo />

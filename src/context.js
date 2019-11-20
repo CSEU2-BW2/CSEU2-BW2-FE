@@ -9,6 +9,7 @@ const context = createContext({
   coordinates: "(60, 60)",
   exits: [],
   cooldown: 0,
+  cooldownActive: false,
   errors: [],
   messages: [],
   items: [],

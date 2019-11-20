@@ -1,10 +1,14 @@
-import React, { useContext } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect } from "react";
 import Context from "../context";
 import styled from "styled-components";
 
 const RoomInfo = () => {
-  const { state } = useContext(Context);
-  console.log(state.items);
+  const { state, dispatch } = useContext(Context);
+
+  const countDownCooldown = () => {};
+
+ 
 
   return (
     <Root>
