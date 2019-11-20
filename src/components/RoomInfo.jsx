@@ -1,16 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext } from "react";
 import Context from "../context";
 import styled from "styled-components";
 
 const RoomInfo = () => {
   const { state } = useContext(Context);
-  console.log(state.items);
 
   return (
     <Root>
       <Head>
         <h2>{state.title}</h2>
-        {/* <p> room id: {state.room_id}</p> */}
         {state.items.length === 0
           ? "No Tresures in this Room"
           : state.items.map(item => <p key={item}>Tresure: {item}</p>)}

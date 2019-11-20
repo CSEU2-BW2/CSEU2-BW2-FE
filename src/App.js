@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useReducer, useContext } from "react";
 import Context from "./context";
 import reducer from "./reducer";
@@ -20,16 +21,28 @@ function App() {
     axios
       .get("https://lambda-treasure-hunt.herokuapp.com/api/adv/init/", headers)
       .then(res => {
-        //console.log(res.data);
         dispatch({ type: "FETCH_INIT", payload: res.data });
       })
       .catch(err => {
         console.log(err.response.data);
         dispatch({ type: "ERROR_INIT", payload: err.response.data });
       });
-
-    return () => {};
+    countDownCooldown();
   }, []);
+
+  const countDownCooldown = async () => {
+    console.log(state.cooldown);
+    if (!state.cooldownActive) {
+      const cooldownInterval = setInterval(() => {
+        if (state.cooldown > 0) {
+          dispatch({ type: "DECREASE_COOLDOWN", payload: true });
+        } else {
+          clearInterval(cooldownInterval);
+          dispatch({ type: "SET_COOLDOWN", payload: 0 });
+        }
+      }, 1000);
+    }
+  };
 
   return (
     <div className="App">

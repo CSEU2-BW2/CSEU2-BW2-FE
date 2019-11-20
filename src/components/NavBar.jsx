@@ -7,7 +7,6 @@ const NavBar = () => {
   return (
     <Root>
       <h2>Lambda Tresure Hunt</h2>
-      <button>{state.room_id}</button>
     </Root>
   );
 };
@@ -27,14 +26,4 @@ const Root = styled.div`
     margin-left: 20px;
   }
 
-  button {
-    position: absolute;
-    right: 2rem;
-    background: none;
-    border: 2px solid black;
-    border-radius: 4px;
-    padding: 0.4rem 2rem;
-    font-size: 2rem;
-    color: purple;
-  }
 `;

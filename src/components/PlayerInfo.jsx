@@ -10,7 +10,7 @@ const headers = {
 
 const PlayerInfo = () => {
   const { state, dispatch } = useContext(Context);
-  console.log(state);
+  //console.log(state);
 
   useEffect(() => {
     axios
@@ -23,10 +23,10 @@ const PlayerInfo = () => {
         dispatch({ type: "FETCH_PLAYER", payload: res.data });
       })
       .catch(err => {
-        debugger;
+        console.log(err);
         //dispatch({ type: "ERROR_INIT", payload: err.response.data });
       });
-  }, []);
+  }, [dispatch]);
 
   return (
     <Root>
@@ -37,11 +37,10 @@ const PlayerInfo = () => {
       <p>
         Inventory:{" "}
         {state.inventory.length > 0 &&
-          state.inventory.map(inv => <span key={inv}>{inv} </span>)}
+          state.inventory.map((inv, idx) => <span key={idx}>{inv} </span>)}
       </p>
-      <p>Status {state.status}</p>
       <p>Player has mined: {state.hasMined.toString()}</p>
-      <p>Player Error {state.playerErrors}</p>
+      <p>Message: {state.playerMessages}</p>
     </Root>
   );
 };

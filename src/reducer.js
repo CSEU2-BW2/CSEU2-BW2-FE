@@ -21,7 +21,8 @@ export default function reducer(state, { type, payload }) {
         cooldown: payload.cooldown,
         errors: payload.errors,
         messages: payload.messages,
-        items: payload.items
+        items: payload.items,
+        playerMessages: payload.messages
       };
     case "FETCH_PLAYER":
       return {
@@ -33,8 +34,25 @@ export default function reducer(state, { type, payload }) {
         inventory: payload.inventory,
         status: payload.status,
         hasMined: payload.has_mined,
-        playerErrors: payload.errors,
+        // playerErrors: payload.errors,
         playerMessages: payload.messages
+      };
+    case "DECREASE_COOLDOWN":
+      return {
+        ...state,
+        cooldown: state.cooldown - 1,
+        cooldownActive: payload
+      };
+    case "SET_COOLDOWN":
+      return {
+        ...state,
+        // cooldown: 0,
+        cooldownActive: false
+      };
+    case "MOUSE_OVER":
+      return {
+        ...state,
+        roomIdOnMouseOver: payload
       };
     case "ERROR_INIT":
       return {
