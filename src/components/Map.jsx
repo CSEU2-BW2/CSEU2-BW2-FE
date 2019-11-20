@@ -70,4 +70,6 @@ const Map = () => {
 
 export default Map;
 
-const MapWrapper = styled.div``;
+const MapWrapper = styled.div`
+  margin-top: 20px;
+`;

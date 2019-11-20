@@ -8,6 +8,7 @@ import RoomInfo from "./RoomInfo";
 import Map from "./Map";
 import TresurePicker from "./TresurePicker";
 import PlayerInfo from "./PlayerInfo";
+import TopDash from "./TopDash";
 
 const token = "Token " + process.env.REACT_APP_API_KEY;
 const headers = {
@@ -74,7 +75,10 @@ const Dashboard = () => {
         <TresurePicker />
         <PlayerInfo />
       </SidePannel>
-      <Map />
+      <RightSide>
+        <TopDash />
+        <Map />
+      </RightSide>
     </Root>
   );
 };
@@ -83,10 +87,15 @@ export default Dashboard;
 
 const Root = styled.div`
   display: flex;
-  padding-top: 20px;
+  padding-top: 10px;
 `;
 const SidePannel = styled.div`
   height: 100%;
   min-width: 350px;
   max-width: 350px;
+`;
+
+const RightSide = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
