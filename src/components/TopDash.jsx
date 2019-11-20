@@ -1,14 +1,36 @@
 import React, { useContext, useState } from "react";
 import Context from "../context";
 import styled from "styled-components";
+import axios from "axios";
 // import useDropdown from "./useDropdown";
 
-
+const token = "Token " + process.env.REACT_APP_API_KEY;
+const headers = {
+  headers: { "Content-Type": "application/JSON", Authorization: token }
+};
 
 const TopDash = () => {
   const { state } = useContext(Context);
   // const [value, Dropdown] = useDropdown("Sell", "", state.inventory);
   const [val, setVal] = useState("Choose");
+
+  const sellItems = () => {
+    axios
+      .post(
+        "https://lambda-treasure-hunt.herokuapp.com/api/adv/take/",
+        { name: val },
+        headers
+      )
+      .then(res => {
+        debugger;
+        //dispatch({ type: "FETCH_PLAYER", payload: res.data });
+      })
+      .catch(err => {
+        debugger;
+        //dispatch({ type: "ERROR_INIT", payload: err.response.data });
+      });
+  };
+
   return (
     <Root>
       <div style={{ display: "flex", alignItems: "center" }}>

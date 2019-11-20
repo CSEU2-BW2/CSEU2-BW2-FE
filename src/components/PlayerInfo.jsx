@@ -12,7 +12,6 @@ const PlayerInfo = () => {
   const { state, dispatch } = useContext(Context);
   //console.log(state);
 
-
   useEffect(() => {
     axios
       .post(
@@ -24,7 +23,7 @@ const PlayerInfo = () => {
         dispatch({ type: "FETCH_PLAYER", payload: res.data });
       })
       .catch(err => {
-        //debugger;
+        console.log(err);
         //dispatch({ type: "ERROR_INIT", payload: err.response.data });
       });
   }, []);

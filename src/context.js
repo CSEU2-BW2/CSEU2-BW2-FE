@@ -21,7 +21,8 @@ const context = createContext({
   status: [],
   hasMined: false,
   playerErrors: [],
-  playerMessages: []
+  playerMessages: [],
+  roomIdOnMouseOver: null
 });
 
 export default context;

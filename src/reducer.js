@@ -48,6 +48,11 @@ export default function reducer(state, { type, payload }) {
         // cooldown: 0,
         cooldownActive: false
       };
+    case "MOUSE_OVER":
+      return {
+        ...state,
+        roomIdOnMouseOver: payload
+      };
     case "ERROR_INIT":
       return {
         ...state,

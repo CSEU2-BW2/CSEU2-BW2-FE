@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Context from "../context";
@@ -9,7 +9,9 @@ const headers = {
 };
 
 const TresurePicker = () => {
-  const { state, dispatch } = useContext(Context);
+  const { state } = useContext(Context);
+
+  console.log(state.roomIdOnMouseOver);
 
   const tresureInTheRoom = state.items.length > 0 ? state.items[0] : "";
 
@@ -21,11 +23,13 @@ const TresurePicker = () => {
         headers
       )
       .then(res => {
-        debugger;
+        //debugger;
+        console.log(res.data);
         //dispatch({ type: "FETCH_PLAYER", payload: res.data });
       })
       .catch(err => {
-        debugger;
+        // debugger;
+        console.log(err);
         //dispatch({ type: "ERROR_INIT", payload: err.response.data });
       });
   };
@@ -37,6 +41,8 @@ const TresurePicker = () => {
       {isTresureInRoom ? (
         <button onClick={pickTresure}>Pick Tresure</button>
       ) : null}
+
+      <p>{state.roomIdOnMouseOver}</p>
     </Root>
   );
 };
@@ -45,6 +51,8 @@ export default TresurePicker;
 
 const Root = styled.div`
   height: 70px;
+  display: flex;
+  justify-content: center;
   button {
     padding: 10px;
     border-radius: 5px;
@@ -56,5 +64,9 @@ const Root = styled.div`
       color: white;
       cursor: pointer;
     }
+  }
+
+  p {
+    font-size: 20px;
   }
 `;

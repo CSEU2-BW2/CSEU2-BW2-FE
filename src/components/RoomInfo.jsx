@@ -1,20 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Context from "../context";
 import styled from "styled-components";
 
 const RoomInfo = () => {
-  const { state, dispatch } = useContext(Context);
-
-  const countDownCooldown = () => {};
-
- 
+  const { state } = useContext(Context);
 
   return (
     <Root>
       <Head>
         <h2>{state.title}</h2>
-        {/* <p> room id: {state.room_id}</p> */}
         {state.items.length === 0
           ? "No Tresures in this Room"
           : state.items.map(item => <p key={item}>Tresure: {item}</p>)}
