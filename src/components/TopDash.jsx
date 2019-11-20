@@ -1,14 +1,19 @@
 import React, { useContext } from "react";
 import Context from "../context";
 import styled from "styled-components";
+import useDropdown from "./useDropdown";
 
 const TopDash = () => {
   const { state } = useContext(Context);
+  const [value, Dropdown] = useDropdown("Sell", "", state.inventory);
   return (
     <Root>
-      <h2>Current Room: </h2>
-      <p>{state.room_id}</p>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <h2>Current Room: </h2>
+        <p>{state.room_id}</p>
+      </div>
       <h4>{state.cooldown < 0 && <span>Ready to move</span>}</h4>
+      <Dropdown />
     </Root>
   );
 };
@@ -22,6 +27,7 @@ const Root = styled.div`
   margin-bottom: 10px;
   display: flex;
   align-items: center;
+  justify-content: space-around;
 
   h2 {
     margin: 0;
