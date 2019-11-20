@@ -21,7 +21,6 @@ const Dashboard = () => {
   const handleControls = e => {
     const next_room_id =
       state.mapGraph[state.room_id][1][e.target.value.toString()] || 0;
-    console.log(next_room_id);
     if (next_room_id || next_room_id === 0) {
       axios
         .post(
@@ -34,7 +33,6 @@ const Dashboard = () => {
         )
         .then(res => {
           //debugger;
-          console.log(res.data);
           dispatch({ type: "FETCH_MOVE", payload: res.data });
         })
         .catch(err => {

@@ -1,11 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Context from "../context";
 import styled from "styled-components";
-import useDropdown from "./useDropdown";
+// import useDropdown from "./useDropdown";
+
+
 
 const TopDash = () => {
   const { state } = useContext(Context);
-  const [value, Dropdown] = useDropdown("Sell", "", state.inventory);
+  // const [value, Dropdown] = useDropdown("Sell", "", state.inventory);
+  const [val, setVal] = useState("Choose");
   return (
     <Root>
       <div style={{ display: "flex", alignItems: "center" }}>
@@ -13,7 +16,25 @@ const TopDash = () => {
         <p>{state.room_id}</p>
       </div>
       <h4>{state.cooldown < 0 && <span>Ready to move</span>}</h4>
-      <Dropdown />
+      {/* <Dropdown /> */}
+      <label htmlFor={state.room_id}>
+        sell Item
+        <select
+          id={state.room_id}
+          value={state}
+          onChange={e => setVal(e.target.value)}
+          onBlur={e => setVal(e.target.value)}
+          disabled={!state.inventory.length}
+        >
+          <option>{val}</option>
+          {state.inventory &&
+            state.inventory.map((item, idx) => (
+              <option key={idx} value={item}>
+                {item}
+              </option>
+            ))}
+        </select>
+      </label>
     </Root>
   );
 };
